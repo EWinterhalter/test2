@@ -16,7 +16,7 @@ jobs:
         run: |
           git config --global user.name "winterhalter"
           git config --global user.email "winterhalter@github.com"
-          git clone --recurse-submodules https://github.com/EWinterhalter/test
+          git clone --recurse-submodules https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/EWinterhalter/test
           cd seiflow
           git submodule update --remote --merge
           git commit -am "update submodules from $GITHUB_REPOSITORY"
