@@ -19,5 +19,5 @@ jobs:
           git clone --recurse-submodules https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/EWinterhalter/test
           cd test
           git submodule update --remote --merge
-          git commit -am "update submodules from $GITHUB_REPOSITORY"
+          git commit -am "update submodules from $GITHUB_REPOSITORY" || true
           git push
