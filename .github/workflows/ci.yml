@@ -1,0 +1,23 @@
+name: trigger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this service
+        uses: actions/checkout@v3
+
+      - name: Checkout main 
+        run: |
+          git config --global user.name "winterhalter"
+          git config --global user.email "winterhalter@github.com"
+          git clone --recurse-submodules git@github.com:Winterhalter/test.git
+          cd seiflow
+          git submodule update --remote --merge
+          git commit -am "update submodules from $GITHUB_REPOSITORY"
+          git push
